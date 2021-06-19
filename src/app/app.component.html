@@ -1,0 +1,82 @@
+
+
+
+<div class="container">
+  <form [formGroup]="clienteForm" (ngSubmit)="BuscaCliente()">
+  <h3> Consulta cliente </h3>
+      <div class="row">
+      <table class="table">
+
+      <tr>
+        <td> Id do cliente</td>
+        <td><input type="text" formControlName="Id">
+          <div *ngIf="submitted && clienteForm.controls.Id.errors" class="text-danger">
+            <div *ngIf="clienteForm.controls.Id.errors.required">O número do Id é obrigatório</div>
+
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button type="submit" class="btn btn-primary">{{ClienteEventValue}}</button>
+        </td>
+      </tr>
+    </table>
+    </div>
+   <div class="row">
+    <table class="table table-striped">
+      <tr>
+        <td>Nome</td>
+      </tr>
+
+      <tr *ngIf="data" >
+        <td>{{data.nome}}</td>
+      </tr>
+    </table>
+  </div>
+ </form>
+</div>
+
+<div class="container">
+  <form [formGroup]="cobrancaForm" (ngSubmit)="SimulaValorTotal()">
+      <h3> Cobranca </h3>
+      <div class="row">
+    <table class="table">
+
+      <tr>
+        <td>Número da Parcela</td>
+        <td><input type="text" formControlName="Parcela">
+          <div *ngIf="submitted && cobrancaForm.controls.Parcela.errors" class="text-danger">
+            <div *ngIf="cobrancaForm.controls.Parcela.errors.required">O número da parcela é obrigatório</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Valor</td>
+        <td>
+          <input type="text" formControlName="Valor">
+          <div *ngIf="submitted && cobrancaForm.controls.Valor.errors" class="text-danger">
+            <div *ngIf="cobrancaForm.controls.Valor.errors.required">O Valor é obrigatório</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button type="submit" class="btn btn-primary">{{CobrancaEventValue}}</button>
+        </td>
+      </tr>
+    </table>
+    </div>
+   <div class="row">
+    <table class="table table-striped">
+      <tr>
+        <td>Valor Total</td>
+      </tr>
+      <tr *ngIf="data">
+        <td>{{data.valorTotal | currency: 'BRL'}}</td>
+      </tr>
+    </table>
+    </div>
+ </form>
+</div>
+
